@@ -6,7 +6,8 @@
 This is a basic flashcard app that asks a question to user and gives answer to them on click.
 
 ### App Walk-though
-Display question and answer on click:<br><img src="http://g.recordit.co/1P87roBJw9.gif" width=200><br>
+Display question and answer on click:<br><img src="http://g.recordit.co/1P87roBJw9.gif" width=200><br><br>
+Change in background color of question and answer:<br><img src="http://g.recordit.co/WsOJpDQ0gZ.gif" width=200><br>
 
 
 
