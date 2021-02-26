@@ -3,7 +3,7 @@
 ## Lab 2
 
 ### App Description
-This is a basic falsh card app that asks a question to user and gives answer to them on click.
+This is a basic flashcard app that asks a question to user and gives answer to them on click.
 
 ### App Walk-though
 Display question and answer on click:<br><img src="http://g.recordit.co/1P87roBJw9.gif" width=200><br>
