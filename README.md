@@ -8,7 +8,8 @@ This is a basic flashcard app that asks a question to user and gives answer to t
 ### App Walk-though
 Display question and answer on click:<br><img src="http://g.recordit.co/1P87roBJw9.gif" width=200><br><br>
 Change in background color of question and answer:<br><img src="http://g.recordit.co/WsOJpDQ0gZ.gif" width=200><br>
-Added shape drawables question and answer:<br><img src="http://g.recordit.co/P8jqsjV5RG.gif" width=200><br>
+Shape drawables to question and answer:<br><img src="http://g.recordit.co/P8jqsjV5RG.gif" width=200><br>
+Three options for users to choose from and change in background color according to the answer: <br><img src="http://g.recordit.co/qYAVCQNVvX.gif" width=200><br
 
 
 
@@ -23,6 +24,6 @@ Added shape drawables question and answer:<br><img src="http://g.recordit.co/P8j
 - [X] toggle the flashcard between the question side and the answer side
 - [X] Style the question and answer side of the card to better distinguish between the two sides
 - [X] Add shape drawables to the question and answer
-- [] Add selectable multiple choice answers beneath the card
-   - [ ] Change the background color of the multiple choice answers when clicked to indicate whether the question waanswered correctly
+- [X] Add selectable multiple choice answers beneath the card
+- [X] Change the background color of the multiple choice answers when clicked to indicate whether the question waanswered correctly
 - [ ] Further customize and style the card
