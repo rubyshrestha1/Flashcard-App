@@ -7,8 +7,8 @@ This is a basic flashcard app that asks a question to user and gives answer to t
 
 ### App Walk-though
 Display question and answer on click:<br><img src="http://g.recordit.co/1P87roBJw9.gif" width=200><br><br>
-Change in background color of question and answer:<br><img src="http://g.recordit.co/WsOJpDQ0gZ.gif" width=200><br>
-Shape drawables to question and answer:<br><img src="http://g.recordit.co/P8jqsjV5RG.gif" width=200><br>
+Change in background color of question and answer:<br><img src="http://g.recordit.co/WsOJpDQ0gZ.gif" width=200><br><br>
+Shape drawables to question and answer:<br><img src="http://g.recordit.co/P8jqsjV5RG.gif" width=200><br><br>
 Three options for users to choose from and change in background color according to the answer: <br><img src="http://g.recordit.co/qYAVCQNVvX.gif" width=200><br
 
 
