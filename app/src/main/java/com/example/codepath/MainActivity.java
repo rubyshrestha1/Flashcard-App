@@ -2,8 +2,11 @@ package com.example.codepath;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.strictmode.WebViewMethodCalledOnWrongThreadViolation;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -85,6 +88,27 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+        ((ImageView) findViewById(R.id.plus)).setImageResource(R.drawable.plus);
+
+        findViewById(R.id.plus).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AddCard.class);
+                startActivityForResult(intent,100);
+
+            }
+        });
+
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100) { // this 100 needs to match the 100 we used when we called startActivityForResult!
+            String name1 = data.getExtras().getString("name1"); // 'string1' needs to match the key we used when we put the string in the Intent
+
+        }
     }
 
 
