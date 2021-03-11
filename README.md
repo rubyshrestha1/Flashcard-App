@@ -6,9 +6,9 @@
 This app creates multi activity and asks user for questions and answers to show in the main activity.
 
 ### App Walk-though
-Showing '+' and 'X' button<img src="http://g.recordit.co/TG5pmIqPym.gif" width=200><br><br>
-Taking user input<img src="http://g.recordit.co/obC7JOIt0d.gif" width=200><br><br>
-Displaying user input in main screen <img src="http://g.recordit.co/HHVV7mMz5M.gif" width=200><br><br>
+Showing '+' and 'X' button <br><img src="http://g.recordit.co/TG5pmIqPym.gif" width=200><br><br>
+Taking user input<br><img src="http://g.recordit.co/obC7JOIt0d.gif" width=200><br><br>
+Displaying user input in main screen <br><img src="http://g.recordit.co/HHVV7mMz5M.gif" width=200><br><br>
 
 ## Required
 - [X] User can click on a ‘+’ button that takes the user to new ‘Add Card Screen’
