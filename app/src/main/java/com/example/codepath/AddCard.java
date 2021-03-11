@@ -23,19 +23,21 @@ public class AddCard extends AppCompatActivity {
             }
 
             });
-
-        ((EditText) findViewById(R.id.editName)).getText().toString();
-
-        findViewById(R.id.save).setOnClickListener(new View.OnClickListener(){
-
+        ((Button) findViewById(R.id.save)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String question= ((EditText)findViewById(R.id.userQuestion)).getText().toString();
+                String answer=  ((EditText)findViewById(R.id.userAnswer)).getText().toString();
+
                 Intent data= new Intent();
-                data.putExtra("name1",   ((EditText) findViewById(R.id.editName)).getText().toString());
+                data.putExtra("question",question);
+                data.putExtra("answer",  answer);
                 setResult(RESULT_OK, data);
                 finish();
+
             }
         });
+
 
 
     }

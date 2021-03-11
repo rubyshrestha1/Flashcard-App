@@ -100,13 +100,19 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100) { // this 100 needs to match the 100 we used when we called startActivityForResult!
-            String name1 = data.getExtras().getString("name1"); // 'string1' needs to match the key we used when we put the string in the Intent
+        if (requestCode == 100 && resultCode==RESULT_OK && data!=null) {
+            String question = data.getExtras().getString("question");
+            String answer = data.getExtras().getString("answer");
+            ((TextView) findViewById(R.id.Question1)).setText(question);
+            ((TextView) findViewById(R.id.Answer1)).setText(answer);
+            findViewById(R.id.Option1).setVisibility(View.INVISIBLE);
+            findViewById(R.id.Option2).setVisibility(View.INVISIBLE);
+            findViewById(R.id.Option3).setVisibility(View.INVISIBLE);
 
         }
     }
