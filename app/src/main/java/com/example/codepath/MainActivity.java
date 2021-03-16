@@ -13,7 +13,12 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+    FlashcardDatabase flashcardDatabase;
+    List<Flashcard> list;
+    int currentIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
         TextView option1TextView = findViewById(R.id.Option1);
         TextView option2TextView = findViewById(R.id.Option2);
         TextView option3TextView = findViewById(R.id.Option3);
+
+        flashcardDatabase = new FlashcardDatabase(getApplicationContext());
+        list = flashcardDatabase.getAllCards();
+        if (list != null && list.size() > 0) {
+            questionTextView.setText(list.get(0).getQuestion());
+            answerTextView.setText(list.get(0).getAnswer());
+        }
 
 
         questionTextView.setOnClickListener(new View.OnClickListener() {
@@ -52,14 +64,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        String answer= (String) answerTextView.getText();
+        String answer = (String) answerTextView.getText();
         option1TextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (option1TextView.getText().equals(answer)){
+                if (option1TextView.getText().equals(answer)) {
                     option1TextView.setBackgroundColor(getResources().getColor(R.color.green));
-                }
-                else{
+                } else {
                     option1TextView.setBackgroundColor(getResources().getColor(R.color.red));
                 }
 
@@ -69,10 +80,9 @@ public class MainActivity extends AppCompatActivity {
         option2TextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (option2TextView.getText().equals(answer)){
+                if (option2TextView.getText().equals(answer)) {
                     option2TextView.setBackgroundColor(getResources().getColor(R.color.green));
-                }
-                else{
+                } else {
                     option2TextView.setBackgroundColor(getResources().getColor(R.color.red));
                 }
 
@@ -82,16 +92,38 @@ public class MainActivity extends AppCompatActivity {
         option3TextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (option3TextView.getText().equals(answer)){
+                if (option3TextView.getText().equals(answer)) {
                     option3TextView.setBackgroundColor(getResources().getColor(R.color.green));
-                }
-                else{
+                } else {
                     option3TextView.setBackgroundColor(getResources().getColor(R.color.red));
                 }
 
             }
         });
 
+        ((ImageView) findViewById(R.id.next)).setImageResource(R.drawable.next);
+
+        findViewById(R.id.next).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (list.size() == 0)
+                    return;
+                currentIndex++;
+                if (currentIndex >= list.size()) {
+                    Snackbar.make(questionTextView, "You have reached end of the flashcard", Snackbar.LENGTH_SHORT).show();
+                    currentIndex = 0;
+
+                }
+
+                list = flashcardDatabase.getAllCards();
+                Flashcard flashcard = list.get(currentIndex);
+
+                questionTextView.setText(flashcard.getQuestion());
+                answerTextView.setText(flashcard.getAnswer());
+
+
+            }
+        });
 
         ((ImageView) findViewById(R.id.plus)).setImageResource(R.drawable.plus);
 
@@ -99,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddCard.class);
-                startActivityForResult(intent,100);
+                startActivityForResult(intent, 100);
 
             }
         });
@@ -109,36 +141,41 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.edit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String question= ((TextView)findViewById(R.id.Question1)).getText().toString();
-                String answer=  ((TextView)findViewById(R.id.Answer1)).getText().toString();
+                String question = ((TextView) findViewById(R.id.Question1)).getText().toString();
+                String answer = ((TextView) findViewById(R.id.Answer1)).getText().toString();
                 Intent data = new Intent(MainActivity.this, AddCard.class);
-                data.putExtra("question",question);
+                data.putExtra("question", question);
                 data.putExtra("answer", answer);
                 startActivityForResult(data, 100);
 
             }
         });
+
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100 && resultCode==RESULT_OK && data!=null) {
+        if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
             String question = data.getExtras().getString("question");
             String answer = data.getExtras().getString("answer");
-            String wrong1= data.getExtras().getString("wrong1");
-            String wrong2= data.getExtras().getString("wrong2");
+            String wrong1 = data.getExtras().getString("wrong1");
+            String wrong2 = data.getExtras().getString("wrong2");
             ((TextView) findViewById(R.id.Question1)).setText(question);
             ((TextView) findViewById(R.id.Answer1)).setText(answer);
-            ((TextView)findViewById(R.id.Option1)).setText(answer);
-            ((TextView)findViewById(R.id.Option2)).setText(wrong1);
-            ((TextView)findViewById(R.id.Option3)).setText(wrong2);
+            //((TextView)findViewById(R.id.Option1)).setText(answer);
+            //((TextView)findViewById(R.id.Option2)).setText(wrong1);
+            //((TextView)findViewById(R.id.Option3)).setText(wrong2);
 
+            flashcardDatabase.insertCard(new Flashcard(question, answer));
+            list = flashcardDatabase.getAllCards();
 
+            Snackbar.make(findViewById(R.id.Question1), "Card successfully created", Snackbar.LENGTH_SHORT)
+                    .show();
         }
 
-        Snackbar.make(findViewById(R.id.Question1), "Card successfully created", Snackbar.LENGTH_SHORT)
-                .show();
+
     }
 
 
