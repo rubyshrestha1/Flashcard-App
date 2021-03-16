@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.strictmode.WebViewMethodCalledOnWrongThreadViolation;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        String answer= "Third Monday of January";
+        String answer= (String) answerTextView.getText();
         option1TextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,6 +103,21 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        ((ImageView) findViewById(R.id.edit)).setImageResource(R.drawable.edit);
+
+        findViewById(R.id.edit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String question= ((TextView)findViewById(R.id.Question1)).getText().toString();
+                String answer=  ((TextView)findViewById(R.id.Answer1)).getText().toString();
+                Intent data = new Intent(MainActivity.this, AddCard.class);
+                data.putExtra("question",question);
+                data.putExtra("answer", answer);
+                startActivityForResult(data, 100);
+
+            }
+        });
     }
 
     @Override
@@ -108,13 +126,19 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 100 && resultCode==RESULT_OK && data!=null) {
             String question = data.getExtras().getString("question");
             String answer = data.getExtras().getString("answer");
+            String wrong1= data.getExtras().getString("wrong1");
+            String wrong2= data.getExtras().getString("wrong2");
             ((TextView) findViewById(R.id.Question1)).setText(question);
             ((TextView) findViewById(R.id.Answer1)).setText(answer);
-            findViewById(R.id.Option1).setVisibility(View.INVISIBLE);
-            findViewById(R.id.Option2).setVisibility(View.INVISIBLE);
-            findViewById(R.id.Option3).setVisibility(View.INVISIBLE);
+            ((TextView)findViewById(R.id.Option1)).setText(answer);
+            ((TextView)findViewById(R.id.Option2)).setText(wrong1);
+            ((TextView)findViewById(R.id.Option3)).setText(wrong2);
+
 
         }
+
+        Snackbar.make(findViewById(R.id.Question1), "Card successfully created", Snackbar.LENGTH_SHORT)
+                .show();
     }
 
 
