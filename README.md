@@ -11,7 +11,7 @@ Taking user input<br><img src="http://g.recordit.co/obC7JOIt0d.gif" width=200><b
 Displaying user input in main screen <br><img src="http://g.recordit.co/HHVV7mMz5M.gif" width=200><br><br>
 Allowing user to edit the card <br><img src="http://g.recordit.co/XiY7uKaJqO.gif" width=200><br><br>
 Displaying error message if the question or answer is left blank<br><img src="http://g.recordit.co/5knuWIMc8R.gif" width=200><br><br>
-Displaying snack bar<br><img src="https://recordit.co/cvsaWLBDbV" width=200><br><br>
+Displaying snack bar<br><img src="http://g.recordit.co/cvsaWLBDbV.gif" width=200><br><br>
 Taking multiple answers from user<br><img src="http://g.recordit.co/rh4QPcboyy.gif" width=200><br><br>
 
 ## Required
