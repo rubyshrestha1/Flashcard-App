@@ -9,6 +9,10 @@ This app creates multi activity and asks user for questions and answers to show 
 Showing '+' and 'X' button <br><img src="http://g.recordit.co/TG5pmIqPym.gif" width=200><br><br>
 Taking user input<br><img src="http://g.recordit.co/obC7JOIt0d.gif" width=200><br><br>
 Displaying user input in main screen <br><img src="http://g.recordit.co/HHVV7mMz5M.gif" width=200><br><br>
+Allowing user to edit the card <br><img src="http://g.recordit.co/XiY7uKaJqO.gif" width=200><br><br>
+Displaying error message if the question or answer is left blank<br><img src="http://g.recordit.co/5knuWIMc8R.gif" width=200><br><br>
+Displaying snack bar<br><img src="https://recordit.co/cvsaWLBDbV" width=200><br><br>
+Taking multiple answers from user<br><img src="http://g.recordit.co/rh4QPcboyy.gif" width=200><br><br>
 
 ## Required
 - [X] User can click on a ‘+’ button that takes the user to new ‘Add Card Screen’
@@ -18,11 +22,11 @@ Displaying user input in main screen <br><img src="http://g.recordit.co/HHVV7mMz
 - [X] Push your progress to GitHub!
 
 ## Optional
-- [ ] User can edit a card
-- [ ] An error message is shown if the user doesn't enter both a Question and an Answer
-- [ ] A notification is shown if the card was created successfully
-- [ ] User can also enter multiple choice answers when creating a card
-- [ ] App is further styled and customized!
+- [X] User can edit a card
+- [X] An error message is shown if the user doesn't enter both a Question and an Answer
+- [X] A notification is shown if the card was created successfully
+- [X] User can also enter multiple choice answers when creating a card
+- [] App is further styled and customized!
 
 
 ## Lab 2
