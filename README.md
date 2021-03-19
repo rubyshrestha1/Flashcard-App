@@ -8,13 +8,14 @@ This app saves the user entered data in a database which is retrieved even after
 ### App Walk-though
 Saving user data in database andd retreieving it on app relaunch<br><img src="http://g.recordit.co/AeaYkQ12c6.gif" width=200><br><br>
 Creating multiple cards and browsing through them<br><img src="http://g.recordit.co/CVEMYtO4rr.gif" width=200><br><br>
+Deleting the card from the app<br><img src="http://g.recordit.co/WOgwHe311u.gif" width=200><br><br>
 
 ## Required
 - [X] User can create a card and still see their created card when the app is relaunched.
 - [X] User can create muliple cards and browse through all created cards
 
 ## Optional
-- [ ] User can delete a card and no longer see it in their deck anymore
+- [X] User can delete a card and no longer see it in their deck anymore
 - [ ] Flashcards are shown in random order instead of the order they were created in
 - [ ] User can edit a card and see the edit saved when they browse through their deck of cards
 - [ ] User can create flashcards with multiple answers and be able to browse through cards with multiple choice answers shown
