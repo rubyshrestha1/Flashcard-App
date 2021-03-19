@@ -3,6 +3,7 @@ package com.example.codepath;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.strictmode.WebViewMethodCalledOnWrongThreadViolation;
 import android.view.View;
@@ -110,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 currentIndex++;
                 if (currentIndex >= list.size()) {
-                    Snackbar.make(questionTextView, "You have reached end of the flashcard", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(questionTextView, "You have reached end of the flashcard. Showing first card", Snackbar.LENGTH_SHORT).show();
                     currentIndex = 0;
 
                 }
@@ -147,6 +148,23 @@ public class MainActivity extends AppCompatActivity {
                 data.putExtra("question", question);
                 data.putExtra("answer", answer);
                 startActivityForResult(data, 100);
+
+            }
+        });
+
+        ((ImageView) findViewById(R.id.delete)).setImageResource(R.drawable.delete);
+        findViewById(R.id.delete).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                flashcardDatabase.deleteCard(questionTextView.getText().toString());
+                Snackbar.make(findViewById(R.id.Question1), "This card will be deleted", Snackbar.LENGTH_SHORT).show();
+                list = flashcardDatabase.getAllCards();
+                currentIndex--;
+                if(list.size()==0){
+                    questionTextView.setText("");
+                    Snackbar.make(findViewById(R.id.Question1), "Flashcard empty. Click + to add new card", Snackbar.LENGTH_SHORT).show();
+                }
+
 
             }
         });

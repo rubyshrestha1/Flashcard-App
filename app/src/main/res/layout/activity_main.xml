@@ -93,6 +93,16 @@
         android:visibility="invisible"/>
 
     //for eye icon either boolean solution or two buttons
+    <ImageView
+        android:layout_height="30dp"
+        android:layout_width="30dp"
+        android:id="@+id/delete"
+        android:src="@drawable/delete"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/Question1"
+        android:layout_marginTop="15dp"
+
+        />
 
     <ImageView
         android:layout_height="30dp"
@@ -101,16 +111,18 @@
         android:src="@drawable/next"
         android:layout_below="@+id/Question1"
         android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp"
         />
 
     <ImageView
-        android:layout_height="40dp"
-        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_width="30dp"
         android:id="@+id/plus"
         android:src="@drawable/plus"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
          />
+
     <ImageView
         android:layout_height="40dp"
         android:layout_width="40dp"
@@ -119,7 +131,6 @@
         android:layout_alignParentBottom="true"
 
         />
-
 
 
 </RelativeLayout>
