@@ -9,6 +9,18 @@
     tools:context=".MainActivity">
 
 
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Question1"
+       android:layout_centerHorizontal="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="40sp" />
 
     <TextView
         android:id="@+id/Question1"

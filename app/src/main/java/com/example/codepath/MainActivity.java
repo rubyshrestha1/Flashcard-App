@@ -2,15 +2,16 @@ package com.example.codepath;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.os.strictmode.WebViewMethodCalledOnWrongThreadViolation;
+import android.os.CountDownTimer;
 import android.view.View;
-import android.widget.EditText;
+import android.view.ViewAnimationUtils;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -31,6 +32,20 @@ public class MainActivity extends AppCompatActivity {
         TextView option2TextView = findViewById(R.id.Option2);
         TextView option3TextView = findViewById(R.id.Option3);
 
+        countDownTimer = new CountDownTimer(10000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                ((TextView) findViewById(R.id.timer)).setText("" + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+            }
+            private void startTimer() {
+                countDownTimer.cancel();
+                countDownTimer.start();
+            }
+        };
+
+
         flashcardDatabase = new FlashcardDatabase(getApplicationContext());
         list = flashcardDatabase.getAllCards();
         if (list != null && list.size() > 0) {
@@ -42,11 +57,33 @@ public class MainActivity extends AppCompatActivity {
         questionTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                questionTextView.setVisibility(View.INVISIBLE);
-                answerTextView.setVisibility(View.VISIBLE);
+                //questionTextView.setVisibility(View.INVISIBLE);
+                //answerTextView.setVisibility(View.VISIBLE);
+
+                View questionSideView= findViewById(R.id.Question1);
+                View answerSideView= findViewById(R.id.Answer1);
+                // get the center for the clipping circle
+                int cx = answerSideView.getWidth() / 2;
+                int cy = answerSideView.getHeight() / 2;
+
+                // get the final radius for the clipping circle
+                float finalRadius = (float) Math.hypot(cx, cy);
+
+                // create the animator for this view (the start radius is zero)
+                Animator anim = ViewAnimationUtils.createCircularReveal(answerSideView, cx, cy, 0f, finalRadius);
+
+                // hide the question and show the answer to prepare for playing the animation!
+                questionSideView.setVisibility(View.INVISIBLE);
+                answerSideView.setVisibility(View.VISIBLE);
+
+                anim.setDuration(300);
+                anim.start();
             }
 
         });
+
+
+
         answerTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,7 +150,6 @@ public class MainActivity extends AppCompatActivity {
                 if (currentIndex >= list.size()) {
                     Snackbar.make(questionTextView, "You have reached end of the flashcard. Showing first card", Snackbar.LENGTH_SHORT).show();
                     currentIndex = 0;
-
                 }
 
                 list = flashcardDatabase.getAllCards();
@@ -122,7 +158,33 @@ public class MainActivity extends AppCompatActivity {
                 questionTextView.setText(flashcard.getQuestion());
                 answerTextView.setText(flashcard.getAnswer());
 
+                final Animation leftOutAnim = AnimationUtils.loadAnimation(view.getContext(), R.anim.left_out);
+                final Animation rightInAnim = AnimationUtils.loadAnimation(view.getContext(), R.anim.right_in);
 
+                leftOutAnim.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        // this method is called when the animation first starts
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        // this method is called when the animation is finished playing
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+                        // we don't need to worry about this method
+                    }
+                });
+                if (answerTextView.getVisibility()==View.INVISIBLE) {
+                    questionTextView.startAnimation(leftOutAnim);
+                    questionTextView.startAnimation(rightInAnim);
+                }
+                else {
+                    answerTextView.startAnimation(leftOutAnim);
+                    answerTextView.startAnimation(rightInAnim);
+                }
             }
         });
 
@@ -133,6 +195,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddCard.class);
                 startActivityForResult(intent, 100);
+                overridePendingTransition(R.anim.left_out, R.anim.right_in);
+
 
             }
         });
@@ -171,7 +235,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    CountDownTimer countDownTimer;
+   
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
