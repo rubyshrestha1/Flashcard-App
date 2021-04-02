@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     FlashcardDatabase flashcardDatabase;
     List<Flashcard> list;
     int currentIndex = 0;
+    CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 questionSideView.setVisibility(View.INVISIBLE);
                 answerSideView.setVisibility(View.VISIBLE);
 
-                anim.setDuration(300);
+                anim.setDuration(750);
                 anim.start();
             }
 
@@ -195,8 +196,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddCard.class);
                 startActivityForResult(intent, 100);
-                overridePendingTransition(R.anim.left_out, R.anim.right_in);
-
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
 
             }
         });
@@ -235,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    CountDownTimer countDownTimer;
+
    
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
