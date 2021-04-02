@@ -1,5 +1,30 @@
 # Flashcard-App
 
+## Lab 5
+
+### App Description
+This app deals with animation and styling of the app. Different animation are implemented to provide better user experience.
+
+### App Walk-though
+Adding launcher icon for app<br><img src="http://g.recordit.co/BHPPe06p1G.gif" width=200><br><br>
+Adding transition animation when going from main screen to add card screen<br><img src="http://g.recordit.co/jzQT1MIosl.gif" width=200><br><br>
+Adding animation when answer is released<br><img src="http://g.recordit.co/YA4NUX81Tt.gif" width=200><br><br>
+Adding sliding animation when next buttion is clicked<br><img src="http://g.recordit.co/sj0KLcCSUm.gif" width=200><br><br>
+
+## Required
+- [X] User sees a transition animation when going from the main screen to the add card screen.
+- [X] User sees a reveal animation when the flashcard is tapped and the answer is shown
+- [X] User sees flashcards animating in / out when the 'next' button is tapped
+
+## Optional
+- [X] Extra styling is added!
+- [ ] User sees a countdown timer for each question
+- [ ] User sees a 'card flip' animation when the card is tapped
+- [ ] User sees a celebration animation with confetti when they answer a question correctly
+
+
+
+
 ## Lab 4
 
 ### App Description
